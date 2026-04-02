@@ -1,5 +1,15 @@
-from .EliteCard import EliteCard
-from .Combatable import Combatable
-from .Magical import Magical
+from .strategy import (
+    BattleStrategy,
+    NormalStrategy,
+    AggressiveStrategy,
+    DefensiveStrategy,
+    StrategyError
+)
 
-__all__ = ["EliteCard", "Combatable", "Magical"]
+__all__ = [
+    "BattleStrategy",
+    "NormalStrategy",
+    "AggressiveStrategy",
+    "DefensiveStrategy",
+    "StrategyError"
+]

@@ -1,5 +1,3 @@
-from .EliteCard import EliteCard
-from .Combatable import Combatable
-from .Magical import Magical
+from .factories import HealingCreatureFactory, TransformCreatureFactory
 
-__all__ = ["EliteCard", "Combatable", "Magical"]
+__all__ = ["HealingCreatureFactory", "TransformCreatureFactory"]
