@@ -1,40 +1,36 @@
-from ex0 import FlameFactory, AquaFactory
+from ex0.factory import FlameFactory, AquaFactory
 
 
-def test_factory(factory):
+def test_factory(factory) -> None:
     print("\nTesting factory")
-
     base = factory.create_base()
-    evolved = factory.create_evolved()
-
     print(base.describe())
     print(base.attack())
 
+    evolved = factory.create_evolved()
     print(evolved.describe())
-    print(evolved.attack())
+    print(base.attack())
 
 
-def battle(factory1, factory2):
+def test_battle(a, b) -> None:
     print("\nTesting battle")
-
-    c1 = factory1.create_base()
-    c2 = factory2.create_base()
-
-    print(c1.describe())
+    base_a = a()
+    a_c = base_a.create_base()
+    print(a_c.describe())
     print("vs.")
-    print(c2.describe())
+    base_b = b()
+    b_c = base_b.create_base()
+    print(b_c.describe())
 
-    print("fight!")
+    print("  fight!")
 
-    print(c1.attack())
-    print(c2.attack())
+    print(a_c.attack())
+    print(b_c.attack())
 
 
 if __name__ == "__main__":
-    flame = FlameFactory()
+    flam = FlameFactory()
+    test_factory(flam)
     aqua = AquaFactory()
-
-    test_factory(flame)
     test_factory(aqua)
-
-    battle(flame, aqua)
+    test_battle(FlameFactory, AquaFactory)

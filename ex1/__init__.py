@@ -1,1 +1,3 @@
-from .factories import HealingCreatureFactory, TransformCreatureFactory # noqa:  F401
+from .creatures import HealingCreatureFactory, TransformCreatureFactory
+
+__all__ = ["HealingCreatureFactory", "TransformCreatureFactory"]

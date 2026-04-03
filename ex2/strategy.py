@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from ex2.exceptions import InvalidStrategyException
+from .exceptions import InvalidStrategyException
 
 
 class BattleStrategy(ABC):
@@ -24,22 +24,20 @@ class NormalStrategy(BattleStrategy):
 
 class DefensiveStrategy(BattleStrategy):
 
-    def is_valid(self, creature) -> bool:
+    def is_valid(sef, creature) -> bool:
         return hasattr(creature, "heal")
 
-    def act(self, creature, opponent) -> None:
+    def act(self, creature, oppenent) -> None:
         if not self.is_valid(creature):
             raise InvalidStrategyException(
                 f"Invalid Creature '{creature.name}' "
                 "for this defensive strategy"
             )
-
         print(creature.attack())
         print(creature.heal())
 
 
 class AggressiveStrategy(BattleStrategy):
-
     def is_valid(self, creature) -> bool:
         return hasattr(creature, "transform") and hasattr(creature, "revert")
 

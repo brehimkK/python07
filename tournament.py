@@ -1,5 +1,5 @@
-from ex0.factories import FlameFactory, AquaFactory
-from ex1.factories import HealingCreatureFactory, TransformCreatureFactory
+from ex0.factory import FlameFactory, AquaFactory
+from ex1.creatures import HealingCreatureFactory, TransformCreatureFactory
 from ex2 import (
     NormalStrategy,
     DefensiveStrategy,
@@ -34,7 +34,7 @@ def fight(opponent1, opponent2):
 def tournament(opponents):
     print("*** Tournament ***")
     print(f"{len(opponents)} opponents involved")
-
+    
     for i in range(len(opponents)):
         for j in range(i + 1, len(opponents)):
 
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     print("\nTournament 1 (error)")
     tournament([
         (flame, AggressiveStrategy()),
-        (healing, DefensiveStrategy()),
+        (healing, DefensiveStrategy),
     ])
 
     print("\nTournament 2 (multiple)")

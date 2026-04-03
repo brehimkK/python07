@@ -1,47 +1,44 @@
-from ex1 import HealingCreatureFactory, TransformCreatureFactory
+from ex1.creatures import HealingCreatureFactory, TransformCreatureFactory
 
 
-def test_healing(factory):
+def test_healing(factory) -> None:
     print("Testing Creature with healing capability")
 
-    base = factory.create_base()
-    evolved = factory.create_evolved()
+    print(" base:")
+    base_a = factory.create_base()
+    print(base_a.describe())
+    print(base_a.attack())
+    print(base_a.heal())
 
-    print("base:")
-    print(base.describe())
-    print(base.attack())
-    print(base.heal())
-
-    print("evolved:")
-    print(evolved.describe())
-    print(evolved.attack())
-    print(evolved.heal())
+    print(" evolved:")
+    base_ev = factory.create_evolved()
+    print(base_ev.describe())
+    print(base_ev.attack())
+    print(base_ev.heal())
 
 
-def test_transform(factory):
-    print("Testing Creature with transform capability")
+def transform_test(factory) -> None:
+    print("\nTesting Creature with transform capability")
 
-    base = factory.create_base()
-    evolved = factory.create_evolved()
+    print(" base:")
+    base_sh = factory.create_base()
+    print(base_sh.describe())
+    print(base_sh.attack())
+    print(base_sh.transform())
+    print(base_sh.attack())
+    print(base_sh.revert())
 
-    print("base:")
-    print(base.describe())
-    print(base.attack())
-    print(base.transform())
-    print(base.attack())
-    print(base.revert())
-
-    print("evolved:")
-    print(evolved.describe())
-    print(evolved.attack())
-    print(evolved.transform())
-    print(evolved.attack())
-    print(evolved.revert())
+    print(" evolved:")
+    base_ev = factory.create_evolved()
+    print(base_ev.describe())
+    print(base_ev.attack())
+    print(base_ev.transform())
+    print(base_ev.attack())
+    print(base_ev.revert())
 
 
 if __name__ == "__main__":
-    healing = HealingCreatureFactory()
-    transform = TransformCreatureFactory()
-
-    test_healing(healing)
-    test_transform(transform)
+    h = HealingCreatureFactory()
+    test_healing(h)
+    sh = TransformCreatureFactory()
+    transform_test(sh)

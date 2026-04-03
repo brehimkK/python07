@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from .creature import Flameling, Pyrodon, Aquabub, Torragon, Creature
+from .creature import Creature, Flameling, Pyrodon, Aquabub, Torragon
 
 
 class CreatureFactory(ABC):
@@ -15,17 +15,17 @@ class CreatureFactory(ABC):
 
 class FlameFactory(CreatureFactory):
 
-    def create_base(self) -> Creature:
+    def create_base(self) -> Flameling:
         return Flameling()
 
-    def create_evolved(self) -> Creature:
+    def create_evolved(self) -> Pyrodon:
         return Pyrodon()
 
 
 class AquaFactory(CreatureFactory):
 
-    def create_base(self) -> Creature:
+    def create_base(self) -> Aquabub:
         return Aquabub()
 
-    def create_evolved(self) -> Creature:
+    def create_evolved(self) -> Torragon:
         return Torragon()
