@@ -22,7 +22,7 @@ def fight(opponent1, opponent2):
     print(f"{c1.describe()}")
     print("vs.")
     print(f"{c2.describe()}")
-    print("now fight!")
+    print(" now fight!")
 
     try:
         strategy1.act(c1, c2)
@@ -33,11 +33,25 @@ def fight(opponent1, opponent2):
 
 def tournament(opponents):
     print("*** Tournament ***")
+
+    formatted = []
     print(f"{len(opponents)} opponents involved")
-    
+    for creature, strategy in opponents:
+        if isinstance(creature, FlameFactory):
+            creature_name = "Flameling"
+        elif isinstance(creature, HealingCreatureFactory):
+            creature_name = "Healing"
+        elif isinstance(creature, AquaFactory):
+            creature_name = "Aquabub"
+        elif isinstance(creature, TransformCreatureFactory):
+            creature_name = "Transform"
+        strategy_name = strategy.__class__.__name__.replace("Strategy", "")
+
+        formatted.append(f"({creature_name}+{strategy_name})")
+
+    print(f"[ {', '.join(formatted)} ]")
     for i in range(len(opponents)):
         for j in range(i + 1, len(opponents)):
-
             print("* Battle *")
 
             try:
@@ -63,7 +77,7 @@ if __name__ == "__main__":
     print("\nTournament 1 (error)")
     tournament([
         (flame, AggressiveStrategy()),
-        (healing, DefensiveStrategy),
+        (healing, DefensiveStrategy()),
     ])
 
     print("\nTournament 2 (multiple)")
